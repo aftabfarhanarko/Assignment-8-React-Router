@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "title": "PhotoMaster Pro",
+    "companyName": "PixelForge Ltd.",
+    "image": "https://i.ibb.co/vZY2y4r/app1.png",
+    "description": "A professional photo editing app with AI-based filters and retouch tools.",
+    "size": 84,
+    "reviews": 12045,
+    "ratingAvg": 4.6,
+    "downloads": "5M",
+    "ratings": [
+      { "name": "1 star", "count": 500 },
+      { "name": "2 star", "count": 800 },
+      { "name": "3 star", "count": 1200 },
+      { "name": "4 star", "count": 2500 },
+      { "name": "5 star", "count": 7045 }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "FitTrack",
+    "companyName": "Healthify Apps",
+    "image": "https://i.ibb.co/Qjpj5D8/app2.png",
+    "description": "Track your workouts, calories, and fitness progress with smart insights.",
+    "size": 62,
+    "reviews": 8420,
+    "ratingAvg": 4.3,
+    "downloads": "3M",
+    "ratings": [
+      { "name": "1 star", "count": 300 },
+      { "name": "2 star", "count": 600 },
+      { "name": "3 star", "count": 1000 },
+      { "name": "4 star", "count": 2500 },
+      { "name": "5 star", "count": 4020 }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Learnify",
+    "companyName": "EduNova",
+    "image": "https://i.ibb.co/JHn6nTg/app3.png",
+    "description": "Interactive learning app for students with video tutorials and quizzes.",
+    "size": 95,
+    "reviews": 15600,
+    "ratingAvg": 4.8,
+    "downloads": "8M",
+    "ratings": [
+      { "name": "1 star", "count": 400 },
+      { "name": "2 star", "count": 600 },
+      { "name": "3 star", "count": 1000 },
+      { "name": "4 star", "count": 3000 },
+      { "name": "5 star", "count": 10600 }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "TravelGo",
+    "companyName": "SkyBound Tech",
+    "image": "https://i.ibb.co/4jR2xXW/app4.png",
+    "description": "Plan trips, book hotels, and explore new destinations easily.",
+    "size": 73,
+    "reviews": 9800,
+    "ratingAvg": 4.2,
+    "downloads": "2.5M",
+    "ratings": [
+      { "name": "1 star", "count": 800 },
+      { "name": "2 star", "count": 1100 },
+      { "name": "3 star", "count": 1800 },
+      { "name": "4 star", "count": 2800 },
+      { "name": "5 star", "count": 3300 }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "NoteCraft",
+    "companyName": "SoftScribe",
+    "image": "https://i.ibb.co/pRrBHKD/app5.png",
+    "description": "Take organized notes, sync across devices, and manage your tasks.",
+    "size": 55,
+    "reviews": 6400,
+    "ratingAvg": 4.5,
+    "downloads": "1.2M",
+    "ratings": [
+      { "name": "1 star", "count": 200 },
+      { "name": "2 star", "count": 400 },
+      { "name": "3 star", "count": 700 },
+      { "name": "4 star", "count": 1500 },
+      { "name": "5 star", "count": 3600 }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "SoundWave",
+    "companyName": "AudioZen Studios",
+    "image": "https://i.ibb.co/Bzpn8Gd/app6.png",
+    "description": "Stream and discover millions of songs with personalized playlists.",
+    "size": 102,
+    "reviews": 25400,
+    "ratingAvg": 4.7,
+    "downloads": "12M",
+    "ratings": [
+      { "name": "1 star", "count": 1000 },
+      { "name": "2 star", "count": 1300 },
+      { "name": "3 star", "count": 2100 },
+      { "name": "4 star", "count": 5000 },
+      { "name": "5 star", "count": 16000 }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "ShopSmart",
+    "companyName": "EcomVerse",
+    "image": "https://i.ibb.co/vHPysjp/app7.png",
+    "description": "Compare prices, track discounts, and shop smarter with alerts.",
+    "size": 89,
+    "reviews": 18700,
+    "ratingAvg": 4.4,
+    "downloads": "6M",
+    "ratings": [
+      { "name": "1 star", "count": 900 },
+      { "name": "2 star", "count": 1000 },
+      { "name": "3 star", "count": 2000 },
+      { "name": "4 star", "count": 5000 },
+      { "name": "5 star", "count": 7800 }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "MindEase",
+    "companyName": "Calmify Labs",
+    "image": "https://i.ibb.co/2gzvxmX/app8.png",
+    "description": "Meditation and relaxation app to improve focus and reduce stress.",
+    "size": 68,
+    "reviews": 9100,
+    "ratingAvg": 4.9,
+    "downloads": "4.5M",
+    "ratings": [
+      { "name": "1 star", "count": 200 },
+      { "name": "2 star", "count": 400 },
+      { "name": "3 star", "count": 600 },
+      { "name": "4 star", "count": 1300 },
+      { "name": "5 star", "count": 6600 }
+    ]
+  }
+]
