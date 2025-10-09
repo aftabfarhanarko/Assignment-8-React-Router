@@ -19,7 +19,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1  lg:grid-cols-4 md:grid-cols-2 gap-7 px-4 md:px-0">
+        <div className="grid grid-cols-2  lg:grid-cols-4 md:grid-cols-3 gap-7 px-4   md:px-2 lg:px-0">
           {appData.map((data) => (
             <Suspense fallback={<AppLoder></AppLoder>}>
               <TrindingApp data={data} key={data.id}></TrindingApp>
