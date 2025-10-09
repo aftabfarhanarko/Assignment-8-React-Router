@@ -1,12 +1,10 @@
-import React from "react";
 import { ArrowDownToLine } from "lucide-react";
 
 import reating from "../../assets/icon-ratings.png";
 import { Link } from "react-router";
 
-const TrindingApp = ({ data }) => {
+const DisplayAllApp = ({ data }) => {
   const { image, title, downloads, ratingAvg } = data;
-
   return (
     <Link>
       <div className="mt-10 bg-base-300 shadow-xl rounded-lg transition-transform duration-400 hover:-translate-y-10 md:hover:-translate-y-5 hover:shadow-2xl ">
@@ -29,8 +27,8 @@ const TrindingApp = ({ data }) => {
           </div>
         </div>
       </div>
-    </Link> 
+    </Link>
   );
 };
 
-export default TrindingApp;
+export default DisplayAllApp;

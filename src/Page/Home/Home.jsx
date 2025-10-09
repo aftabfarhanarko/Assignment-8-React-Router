@@ -22,12 +22,12 @@ const Home = () => {
         <div className="grid grid-cols-1  lg:grid-cols-4 md:grid-cols-2 gap-7 px-4 md:px-0">
           {appData.map((data) => (
             <Suspense fallback={<AppLoder></AppLoder>}>
-              <TrindingApp data={data}></TrindingApp>
+              <TrindingApp data={data} key={data.id}></TrindingApp>
             </Suspense>
           ))}
         </div>
         <div className="flex justify-center mt-15 ">
-          <Link to="">
+          <Link to="/allApp">
           <button className="  shadow-2xl btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white  text-center  px-12 text-lg">
             Show All
           </button>
