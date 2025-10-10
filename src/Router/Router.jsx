@@ -22,16 +22,27 @@ export const router = createBrowserRouter([
         path: "/allApp",
         loader: () => fetch("/allapp.json"),
         Component: AllApp,
+         children:[
+          {
+            path:"*",
+            element:<h2>No Data Found</h2>
+          }
+        ]
       },
       {
         path: "/install",
-        // loader: () => fetch("/allapp.json"),
         Component: InstallsApp,
       },
       {
         path: "/appDetlics/:id",
         loader: () => fetch("/allapp.json"),
         Component: DetlicsSingleApp,
+        children:[
+          {
+            path:"*",
+            element:<h2>No Data Found</h2>
+          }
+        ]
       },
       {
         path: "*",

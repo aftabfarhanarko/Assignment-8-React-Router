@@ -21,7 +21,7 @@ const DetlicsSingleApp = () => {
 
    toast.success("✅ App installed successfully!", {
       position: "top-center",
-      autoClose: 2000, // 2 seconds
+      autoClose: 500, 
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -85,11 +85,7 @@ const DetlicsSingleApp = () => {
           <button
             disabled={buton}
             onClick={() => handelButton(findApp)}
-            className={
-              buton
-                ? "btn btn-accent px-6 text-white text-lg font-semibold mt-5"
-                : "btn btn-accent px-6 text-white text-lg font-semibold mt-5"
-            }
+            className="btn btn-accent px-6 text-white text-lg font-semibold mt-5 shadow-2xl"
           >
             {buton ? "Install" : `Install Now (${findApp.size} MB)`}
           </button>

@@ -6,9 +6,9 @@ import logo from '../../assets/logo.png';
 const Navbar = () => {
   const link = (
     <>
-      <NavLink to="/"><li className="m-2 text-lg font-semibold ">Home</li></NavLink>
-      <NavLink to="/allApp"><li className="m-2 text-lg font-semibold ">Apps</li></NavLink>
-      <NavLink to="/install"><li className="m-2 text-lg font-semibold ">Installation</li></NavLink>
+      <NavLink to="/"><li className="m-2 text-lg font-medium ">Home</li></NavLink>
+      <NavLink to="/allApp"><li className="m-2 text-lg font-medium ">Apps</li></NavLink>
+      <NavLink to="/install"><li className="m-2 text-lg font-medium ">Installation</li></NavLink>
     </>
   );
   return (
@@ -35,11 +35,11 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu text-center menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >{link}
             </ul>
           </div>
-          <a className="text-purple-600 font-medium btn-ghost text-xl flex items-center">
+          <a className="text-purple-600 font-semibold btn-ghost text-xl flex items-center">
            <img className="w-[60px]" src={logo}></img>
             HERO.IO
           </a>

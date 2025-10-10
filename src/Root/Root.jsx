@@ -4,6 +4,7 @@ import { Outlet } from 'react-router';
 import Footer from '../components/Footer/Footer';
 import '../index.css';
 
+
 const Root = () => {
     return (
         <div className='open-sans-font'>
@@ -12,6 +13,8 @@ const Root = () => {
               <Outlet></Outlet>
           </div>
             <Footer></Footer>
+      
+
         </div>
     );
 };
