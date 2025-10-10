@@ -31,6 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/install",
+        loader: () => fetch("/allapp.json"),
         Component: InstallsApp,
       },
       {
