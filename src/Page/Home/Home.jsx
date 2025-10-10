@@ -14,7 +14,7 @@ const Home = () => {
       <div className="max-w-[1250px] mx-auto">
         <div className="text-center mt-20">
           <h1 className="text-4xl md:text-5xl font-semibold">Trending Apps</h1>
-          <p className="text-lg text-gray-400 mt-3">
+          <p className="text-lg  text-gray-700 mt-3">
             Explore All Trending Apps on the Market developed by us
           </p>
         </div>
