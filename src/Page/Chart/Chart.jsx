@@ -1,83 +1,49 @@
-// import React from "react";
-// import {
-//   BarChart,
-//   Bar,
-//   XAxis,
-//   YAxis,
-//   CartesianGrid,
-//   Tooltip,
-//   Legend,
-//   ResponsiveContainer,
-// } from "recharts";
+import React from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
-// const Chart = ({ app }) => {
-//   console.log(app);
-// //   const chartData = {
-// //     name: app.name,
-// //     uv: app,
-// //   }
-//   const getIntroOfPage = (label) => {
-//     if (label === "Page A") {
-//       return "Page A is about men's clothing";
-//     }
-//     if (label === "Page B") {
-//       return "Page B is about women's dress";
-//     }
-//     if (label === "Page C") {
-//       return "Page C is about women's bag";
-//     }
-//     if (label === "Page D") {
-//       return "Page D is about household goods";
-//     }
-//     if (label === "Page E") {
-//       return "Page E is about food";
-//     }
-//     if (label === "Page F") {
-//       return "Page F is about baby food";
-//     }
-//     return "";
-//   };
+const Chart = ({ app }) => {
+  const ratingData = app ? [...app].reverse() : [];
 
-//   const CustomTooltip = ({ active, payload, label }) => {
-//     const isVisible = active && payload && payload.length;
-//     return (
-//       <div
-//         className="custom-tooltip"
-//         style={{ visibility: isVisible ? "visible" : "hidden" }}
-//       >
-//         {isVisible && (
-//           <>
-//             <p className="label">{`${label} : ${payload[0].value}`}</p>
-//             <p className="intro">{getIntroOfPage(label)}</p>
-//             <p className="desc">Anything you want can be displayed here.</p>
-//           </>
-//         )}
-//       </div>
-//     );
-//   };
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-[#fff] border border-[#ccc] p-3 rounded-lg shadow-xl ">
+          <p className="font-semibold text-gray-600">{label}</p>
+          <p className="font-semibold text-gray-600">
+            Count : {payload[0].value}
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+  return (
+    <div className="  rounded-lg shadow-sm bg-white">
+      <ResponsiveContainer width="100%" height={400}>
+        <BarChart
+          layout="vertical"
+          data={ratingData}
+          margin={{ right: 20, left: 20 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis type="number" />
+          <YAxis type="category" dataKey="name" />
+          <Tooltip content={<CustomTooltip />} />
+          <Legend />
+          <Bar dataKey="count" fill="#FF8811" barSize={22} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
 
-//   return (
-//     <ResponsiveContainer width="100%" height="100%">
-//       <BarChart
-//         width={500}
-//         height={300}
-//         data={data}
-//         margin={{
-//           top: 5,
-//           right: 30,
-//           left: 20,
-//           bottom: 5,
-//         }}
-//       >
-//         <CartesianGrid strokeDasharray="3 3" />
-//         <XAxis dataKey="name" />
-//         <YAxis />
-//         <Tooltip content={CustomTooltip} />
-//         <Legend />
-//         <Bar dataKey="pv" barSize={20} fill="#8884d8" />
-//       </BarChart>
-//     </ResponsiveContainer>
-//   );
-// };
-
-// export default Chart;
+export default Chart;

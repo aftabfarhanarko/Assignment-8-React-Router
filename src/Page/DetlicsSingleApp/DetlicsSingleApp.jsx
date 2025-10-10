@@ -7,6 +7,7 @@ import { setItems } from "../../Components/VanilaJS/vanilajs";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Chart from "../Chart/Chart";
 
 const DetlicsSingleApp = () => {
   const [buton, setButon] = useState(false);
@@ -93,11 +94,12 @@ const DetlicsSingleApp = () => {
       </div>
 
       <div className="divider mt-5"></div>
-      {/* {
-        findApp.ratings.map((app, index) => <Suspense>
-            <Chart key={index} app={app}></Chart>
-        </Suspense>)
-      } */}
+      <div>
+        <h1 className="text-xl font-semibold">Ratings</h1>
+           
+            <Chart  app={findApp.ratings}></Chart>
+
+      </div>
       <div className="divider mt-5"></div>
       <div>
         <h1 className="text-xl font-semibold ">Description : </h1>
