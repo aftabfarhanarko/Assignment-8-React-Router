@@ -14,10 +14,10 @@ const AllApp = () => {
   return (
     <div className="max-w-[1250px] mx-auto ">
       <div className="text-center mt-15">
-        <h1 className="text-5xl font-semibold">Our All Applications</h1>
-      <p className="text-lg mt-3  text-gray-700">Explore All Apps on the Market developed by us. We code for Millions</p>
+        <h1 className="text-3xl md:text-5xl font-semibold text-gray-700">Our All Applications</h1>
+      <p className="text-md md:text-lg mt-3  text-gray-600">Explore All Apps on the Market developed by us. We code for Millions</p>
       </div>
-      <div className="flex justify-between items-center mt-10">
+      <div className="flex justify-between items-center mt-10 px-2 md:px-0">
         <h1 className="text-xl font-semibold">({appData.length}) Apps Found</h1>
      <form onSubmit={handelSearch}>
          <label className="input">

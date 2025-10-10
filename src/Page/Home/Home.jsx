@@ -16,7 +16,7 @@ const Home = () => {
       <div className="max-w-[1250px] mx-auto">
         <div className="text-center mt-20">
          <div className="flex items-center  justify-center gap-4">
-           <h1 className="text-4xl md:text-5xl font-semibold">Trending Apps</h1>
+           <h1 className="text-4xl md:text-5xl font-semibold text-gray-700">Trending Apps</h1>
            <span><TrendingUp className="h-15 w-15 text-purple-700" /></span>
          </div>
           <p className="text-lg  text-gray-700 mt-3">
@@ -24,7 +24,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2  lg:grid-cols-4 md:grid-cols-3 gap-7 px-4   md:px-2 lg:px-0">
+        <div className="grid grid-cols-1  lg:grid-cols-4 md:grid-cols-3 gap-7 px-4   md:px-2 lg:px-0">
           {appData.map((data) => (
             <Suspense fallback={<AppLoder></AppLoder>}>
               <TrindingApp data={data} key={data.id}></TrindingApp>

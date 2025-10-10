@@ -8,7 +8,7 @@ const Display = () => {
         <div className=''>
              <div className="text-center  mt-20 max-w-[1250px] mx-auto md-20 ">
         <div className=" max-w-[800px] mx-auto px-2 md:px-0">
-          <h1 className="text-6xl font-semibold ">
+          <h1 className="text-4xl md:text-6xl font-semibold text-gray-700">
             We Build <br />
             <span className="text-purple-600"> Productive </span>Apps
           </h1>
@@ -52,7 +52,7 @@ const Display = () => {
           <img className="mt-10" src={banner}></img>
         </div>
       </div>
-      <div className="bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] w-full text-white">
+      <div className="bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] w-full text-white px-1 md:px-0">
         <div className="max-w-[1250px] mx-auto text-center py-20">
           <h1 className="text-4xl md:text-5xl font-semibold">
             Trusted by Millions, Built for You

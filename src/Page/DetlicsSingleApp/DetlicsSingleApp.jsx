@@ -32,13 +32,14 @@ const DetlicsSingleApp = () => {
   };
   return (
     <div className="max-w-[1250px] mx-auto ">
-      <div className="flex gap-10 md:gap-20 p-5 bg-base-300 mt-7 rounded-lg">
+    <div className="p-2">
+        <div className="flex gap-5 p-1 md:gap-20  md:p-5 bg-base-300 mt-7 rounded-lg">
         <div>
           <img className="h-[280px] rounded-lg" src={findApp.image}></img>
         </div>
         <div className="w-[70%]">
           <div>
-            <h1 className="text-xl md:text-3xl font-semibold">
+            <h1 className="text-xl   md:text-3xl font-semibold">
               Name : {findApp.title}
             </h1>
             <p className="text-[14px] text-gray-700">
@@ -46,14 +47,14 @@ const DetlicsSingleApp = () => {
             </p>
           </div>
           <div className="divider mt-2"></div>
-          <div className="flex gap-20">
+          <div className="flex gap-5 md:gap-20">
             <div className="justify-center flex text-center items-center ">
               <div className="flex flex-col items-center">
-                <img className="" src={downlod}></img>
-                <p className="text-md mt-2 font-medium text-gray-700">
+                <img className="w-[20px] " src={downlod}></img>
+                <p className="text-[14px] md:text-md mt-2 font-medium text-gray-700">
                   Downloads
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold mt-3 text-purple-600">
+                <h2 className="text-xl md:text-4xl font-bold  md:mt-3 text-purple-600">
                   {findApp.downloads}
                 </h2>
               </div>
@@ -61,11 +62,11 @@ const DetlicsSingleApp = () => {
 
             <div className="justify-center flex text-center items-center ">
               <div className="flex flex-col items-center">
-                <img className="" src={reating}></img>
-                <p className="text-md mt-2 font-medium  text-gray-700">
-                  Average Ratings
+                <img className="w-[20px]" src={reating}></img>
+                <p className="text-[14px] md:text-md  mt-2 font-medium  text-gray-700">
+                  Ratings
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold mt-3 text-purple-600">
+                <h2 className="text-xl md:text-4xl font-bold  md:mt-3 text-purple-600">
                   {findApp.ratingAvg}
                 </h2>
               </div>
@@ -73,11 +74,11 @@ const DetlicsSingleApp = () => {
 
             <div className="justify-center flex text-center items-center ">
               <div className="flex flex-col items-center">
-                <img className="" src={like}></img>
-                <p className="text-md mt-2 font-medium  text-gray-700">
-                  Total Reviews
+                <img className="w-[20px]" src={like}></img>
+                <p className="text-[14px] md:text-md mt-2 font-medium  text-gray-700">
+                  Reviews
                 </p>
-                <h2 className="text-3xl md:text-4xl font-bold mt-3 text-purple-600">
+                <h2 className="text-lg md:text-4xl  font-bold md:mt-3 text-purple-600">
                   {findApp.reviews}K
                 </h2>
               </div>
@@ -86,22 +87,23 @@ const DetlicsSingleApp = () => {
           <button
             disabled={buton}
             onClick={() => handelButton(findApp)}
-            className="btn btn-accent px-6 text-white text-lg font-semibold mt-5 shadow-2xl"
+            className="btn btn-accent md:px-6 text-[15px] md:text-lg text-white text-lg font-semibold mt-5 shadow-2xl"
           >
             {buton ? "Install" : `Install Now (${findApp.size} MB)`}
           </button>
         </div>
       </div>
+    </div>
 
       <div className="divider mt-5"></div>
       <div>
-        <h1 className="text-xl font-semibold">Ratings</h1>
+        <h1 className="text-xl font-semibold px-2 mb-4 md:px-0">Ratings</h1>
            
             <Chart  app={findApp.ratings}></Chart>
 
       </div>
       <div className="divider mt-5"></div>
-      <div>
+      <div className="px-3 md:px-0">
         <h1 className="text-xl font-semibold ">Description : </h1>
         <div className=" space-x-6">
           <p className=" leading-relaxed text-gray-700 text-lg mt-7 ">

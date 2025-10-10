@@ -5,7 +5,6 @@ const InstalPageError = () => {
     return (
         <div className='flex justify-center'>
             <img className='mx-auto py-10 mt-10' src={imgad}></img>
-            
         </div>
     );
 };
