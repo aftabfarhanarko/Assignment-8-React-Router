@@ -1,11 +1,69 @@
-import React from 'react';
+import React from "react";
+import { useLoaderData, useParams } from "react-router";
+import downlod from "../../assets/icon-downloads.png";
+import reating from "../../assets/icon-ratings.png";
+import like from "../../assets/icon-review.png";
 
 const DetlicsSingleApp = () => {
-    return (
+  const { id } = useParams();
+  const convartId = parseInt(id);
+  const data = useLoaderData();
+  const findApp = data.find((app) => app.id === convartId);
+
+  console.log(findApp);
+  return (
+    <div className="max-w-[1250px] mx-auto ">
+      <div className="flex gap-10 md:gap-20 p-5 bg-base-300 mt-7 rounded-lg">
         <div>
-           <p>Detlices</p>
+          <img className="h-[250px] rounded-lg" src={findApp.image}></img>
         </div>
-    );
+
+        <div className="w-[70%]">
+          <div>
+            <h1 className="text-xl md:text-3xl font-semibold">
+              Name : {findApp.title}
+            </h1>
+            <p className="text-[14px] text-gray-500">
+              Developed by {findApp.companyName}
+            </p>
+          </div>
+          <div className="divider mt-2"></div>
+          <div className="flex gap-20">
+            <div className="justify-center flex text-center items-center ">
+              <div className="flex flex-col items-center">
+                <img className="" src={downlod}></img>
+                <p className="text-md mt-2 font-medium">Downloads</p>
+                <h2 className="text-3xl md:text-5xl font-bold mt-3 text-purple-600">
+                  {findApp.downloads}
+                </h2>
+              </div>
+            </div>
+
+            <div className="justify-center flex text-center items-center ">
+              <div className="flex flex-col items-center">
+                <img className="" src={reating}></img>
+                <p className="text-md mt-2 font-medium">Average Ratings</p>
+                <h2 className="text-3xl md:text-5xl font-bold mt-3 text-purple-600">
+                  {findApp.ratingAvg}
+                </h2>
+              </div>
+            </div>
+
+            <div className="justify-center flex text-center items-center ">
+              <div className="flex flex-col items-center">
+                <img className="" src={like}></img>
+                <p className="text-md mt-2 font-medium">Total Reviews</p>
+                <h2 className="text-3xl md:text-5xl font-bold mt-3 text-purple-600">
+                  {findApp.reviews}K
+                </h2>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default DetlicsSingleApp;

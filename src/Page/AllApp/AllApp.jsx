@@ -13,6 +13,10 @@ const AllApp = () => {
 
   return (
     <div className="max-w-[1250px] mx-auto ">
+      <div className="text-center mt-15">
+        <h1 className="text-5xl font-semibold">Our All Applications</h1>
+      <p className="text-lg mt-3 text-gray-400">Explore All Apps on the Market developed by us. We code for Millions</p>
+      </div>
       <div className="flex justify-between items-center mt-10">
         <h1 className="text-xl font-semibold">({appData.length}) Apps Found</h1>
      <form onSubmit={handelSearch}>

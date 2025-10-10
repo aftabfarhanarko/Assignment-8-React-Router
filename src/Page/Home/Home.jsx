@@ -6,7 +6,7 @@ import AppLoder from "../../Loder/AppLoder";
 
 const Home = () => {
   const appData = useLoaderData();
-  console.log(appData);
+
 
   return (
     <div>

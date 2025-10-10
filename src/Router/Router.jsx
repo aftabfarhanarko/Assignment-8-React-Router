@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
       },
       {
         path:"/appDetlics/:id",
-        // loader: ({Params}) => fetch("/allapp.json"),
+        loader: () => fetch("/allapp.json"),
         Component: DetlicsSingleApp
       },
       {

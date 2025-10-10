@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const DisplayAllApp = ({ data }) => {
   const { image, title, downloads, ratingAvg,id } = data;
   return (
-    <Link to={`/appDetlics/:${id}`}>
+    <Link to={`/appDetlics/${id}`}>
       <div className="mt-10 bg-base-300 shadow-xl rounded-lg transition-transform duration-400 hover:-translate-y-10 md:hover:-translate-y-5 hover:shadow-2xl ">
         <div className="p-5">
           <img className="rounded-lg h-[290px] w-full" src={image}></img>
