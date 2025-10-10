@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import downlod from "../../assets/icon-downloads.png";
 import reating from "../../assets/icon-ratings.png";
@@ -74,8 +74,11 @@ const DetlicsSingleApp = () => {
       </div>
 
       <div className="divider mt-5"></div>
-      <Chart></Chart>
-
+      {
+        findApp.ratings.map((app, index) => <Suspense>
+            <Chart key={index} app={app}></Chart>
+        </Suspense>)
+      }
       <div className="divider mt-5"></div>
       <div>
         <h1 className="text-xl font-semibold ">Description : </h1>
