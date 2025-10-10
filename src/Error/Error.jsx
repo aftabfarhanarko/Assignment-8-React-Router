@@ -12,7 +12,7 @@ const Error = () => {
           <p className="text-lg text-gray-400 mt-4">
             The page you are looking for is not available.
           </p>
-          <Link to="/allApp">
+          <Link to="/">
             <button className="mt-5  shadow-2xl btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white  text-center  px-12 text-lg">
               Go Back!
             </button>

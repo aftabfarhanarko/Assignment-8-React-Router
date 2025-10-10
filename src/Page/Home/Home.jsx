@@ -3,6 +3,8 @@ import Display from "./Display";
 import TrindingApp from "../TrindingApp/TrindingApp";
 import { Link, useLoaderData } from "react-router";
 import AppLoder from "../../Loder/AppLoder";
+import { TrendingUp } from 'lucide-react';
+
 
 const Home = () => {
   const appData = useLoaderData();
@@ -13,7 +15,10 @@ const Home = () => {
       <Display></Display>
       <div className="max-w-[1250px] mx-auto">
         <div className="text-center mt-20">
-          <h1 className="text-4xl md:text-5xl font-semibold">Trending Apps</h1>
+         <div className="flex items-center  justify-center gap-4">
+           <h1 className="text-4xl md:text-5xl font-semibold">Trending Apps</h1>
+           <span><TrendingUp className="h-15 w-15 text-purple-700" /></span>
+         </div>
           <p className="text-lg  text-gray-700 mt-3">
             Explore All Trending Apps on the Market developed by us
           </p>

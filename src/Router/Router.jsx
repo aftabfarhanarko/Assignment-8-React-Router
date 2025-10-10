@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter} from "react-router";
+import { createBrowserRouter } from "react-router";
 import Root from "../Root/Root";
 import Error from "../Error/Error";
 import Home from "../Page/Home/Home";
@@ -24,18 +24,19 @@ export const router = createBrowserRouter([
         Component: AllApp,
       },
       {
-        path:"/install",
+        path: "/install",
+        // loader: () => fetch("/allapp.json"),
         Component: InstallsApp,
       },
       {
-        path:"/appDetlics/:id",
+        path: "/appDetlics/:id",
         loader: () => fetch("/allapp.json"),
-        Component: DetlicsSingleApp
+        Component: DetlicsSingleApp,
       },
       {
-        path:"*",
-        Component: Error
-      }
+        path: "*",
+        Component: Error,
+      },
     ],
   },
 ]);
