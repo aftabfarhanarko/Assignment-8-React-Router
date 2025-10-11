@@ -40,13 +40,13 @@ const AllApp = () => {
         </form>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-3 md:px-0">
-        {
-          conDItions.length === 0 ? <NotFound></NotFound> : (
-            conDItions.map((data) => (
-             <DisplayAllApp data={data} key={data.id}></DisplayAllApp>
-            ))
-          )
-        }
+        {conDItions.length === 0 ? (
+          <NotFound></NotFound>
+        ) : (
+          conDItions.map((data) => (
+            <DisplayAllApp data={data} key={data.id}></DisplayAllApp>
+          ))
+        )}
       </div>
     </div>
   );

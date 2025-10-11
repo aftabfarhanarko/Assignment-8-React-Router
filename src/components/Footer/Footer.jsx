@@ -7,19 +7,19 @@ const Footer = () => {
   return (
     <div className="mt-20 bg-base-300">
       <div className="max-w-[1250px] mx-auto">
-        <footer className="footer footer-horizontal footer-center bg-base-300 text-base-content rounded p-10">
+        <footer className="footer footer-horizontal footer-center text-base-content rounded p-10  px-5 md:px-0  ">
           <nav className="grid grid-flow-col gap-4">
             <NavLink to="/">
-              <p className="m-2 text-lg font-medium ">Home</p>
+              <p className="m-2 text-[15px] md:text-lg font-medium ">Home</p>
             </NavLink>
             <NavLink to="/allApp">
-              <p className="m-2 text-lg font-medium ">Apps</p>
-            </NavLink>
-            <NavLink to="/install">
-              <p className="m-2 text-lg font-medium ">Installation</p>
+              <p className="m-2 text-[15px] md:text-lg font-medium ">Apps</p>
             </NavLink>
             <NavLink to="/appDetlics">
-              <p className="m-2 text-lg font-medium ">App Detlics</p>
+              <p className="m-2 text-[15px] md:text-lg font-medium ">App Detlics</p>
+            </NavLink>
+            <NavLink to="/install">
+              <p className="m-2 text-[15px] md:text-lg font-medium ">Installation</p>
             </NavLink>
           </nav>
           <nav>
@@ -63,8 +63,6 @@ const Footer = () => {
             <p className="text-xl md:text-2xl">
               Copyright © {new Date().getFullYear()} - We Build Productive Apps . Developed by 
               Aftab Farhan ARKO
-
-
             </p>
           </aside>
         </footer>
@@ -72,5 +70,5 @@ const Footer = () => {
     </div>
   );
 };
-
-export default Footer;
+// cd dist  surge
+export default Footer; 

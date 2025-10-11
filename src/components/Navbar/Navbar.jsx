@@ -2,13 +2,31 @@ import React from "react";
 import "../../index.css";
 import { NavLink } from "react-router";
 import logo from '../../assets/logo.png';
+import { HousePlus } from 'lucide-react';
+import { Webhook } from 'lucide-react';
+import { FaBeer } from 'react-icons/fa';
+
+
 
 const Navbar = () => {
   const link = (
     <>
-      <NavLink to="/"><li className="m-2 text-lg font-medium ">Home</li></NavLink>
-      <NavLink to="/allApp"><li className="m-2 text-lg font-medium ">Apps</li></NavLink>
-      <NavLink to="/install"><li className="m-2 text-lg font-medium ">Installation</li></NavLink>
+     
+      <NavLink to="/" className="flex  items-center">
+      <span className="text-black"><HousePlus /></span>
+      <li className="m-2 text-lg font-medium ">Home</li>
+      </NavLink>
+
+
+      <NavLink to="/allApp" className="flex  items-center ml-3">
+          <Webhook />
+      <li className="m-2 text-lg font-medium ">Apps</li>
+      </NavLink>
+
+      <NavLink to="/install" className="flex  items-center ml-3">
+      <FaBeer />
+      <li className="m-2 text-lg font-medium ">Installation</li>
+      </NavLink>
     </>
   );
   return (
