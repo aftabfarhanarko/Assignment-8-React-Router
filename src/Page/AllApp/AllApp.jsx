@@ -1,18 +1,34 @@
-import React, { Suspense, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import DisplayAllApp from "./DisplayAllApp";
 import { Search } from "lucide-react";
 import NotFound from "./NotFound";
 import useProducts from "../../Components/LodingSpiner/lodingSpiner";
+import AppLoder from "../../Loder/AppLoder";
 // appData
 const AllApp = () => {
-  
-  const {producat, loding, error}  =useProducts()
+  const { producat } = useProducts();
   const [search, setSearch] = useState("");
 
-  const trimUser = search.trim().toLowerCase();
-  const conDItions = trimUser
-    ? producat.filter((app) => app.title.toLowerCase().includes(trimUser))
-    : producat;
+
+  const [filterProducat , setFilterProducat] = useState(producat);
+  const [loding, setLoding] = useState(false);
+  
+
+  useEffect(() => {
+    setLoding(true);
+
+
+    const delay = setTimeout(() => {
+      const trimUser = search.trim().toLowerCase();
+      const conDItions = trimUser
+        ? producat.filter((app) => app.title.toLowerCase().includes(trimUser))
+        : producat;
+          
+        setFilterProducat(conDItions)
+        setLoding(false);
+    }, 600);
+    return () => clearTimeout(delay);
+  }, [search, producat]);
 
   return (
     <div className="max-w-[1250px] mx-auto ">
@@ -25,7 +41,9 @@ const AllApp = () => {
         </p>
       </div>
       <div className="flex justify-between items-center mt-10 px-2 md:px-0">
-        <h1 className="text-xl font-semibold">({producat.length}) Apps Found</h1>
+        <h1 className="text-xl font-semibold">
+          ({filterProducat.length}) Apps Found
+        </h1>
         <form>
           <label className="input">
             <Search className="w-5" />
@@ -41,16 +59,29 @@ const AllApp = () => {
         </form>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-3 md:px-0">
-        {conDItions.length === 0 ? (
-          <NotFound></NotFound>
-        ) : (
-          conDItions.map((data) => (
+
+       {
+        loding ?( <AppLoder></AppLoder>) 
+        :filterProducat.length === 0 ? <NotFound></NotFound> : (
+          filterProducat.map((data) => (
             <DisplayAllApp data={data} key={data.id}></DisplayAllApp>
           ))
-        )}
+        )
+       }
+       
       </div>
     </div>
   );
 };
 
 export default AllApp;
+
+//  {loding ? (
+//           <AppLoder></AppLoder> :  filterProducat.length === 0 ? (
+//           <NotFound></NotFound>
+//         ) : (
+//           filterProducat.map((data) => (
+//             <DisplayAllApp data={data} key={data.id}></DisplayAllApp>
+//           ))
+//         )
+//         )}

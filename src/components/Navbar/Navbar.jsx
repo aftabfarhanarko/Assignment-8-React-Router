@@ -57,7 +57,7 @@ const Navbar = () => {
             >{link}
             </ul>
           </div>
-          <a className="text-purple-600 font-semibold btn-ghost text-xl flex items-center">
+          <a href="/" className="text-purple-600 font-semibold btn-ghost text-xl flex items-center">
            <img className="w-[60px]" src={logo}></img>
             HERO.IO
           </a>

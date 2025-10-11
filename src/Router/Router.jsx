@@ -7,7 +7,6 @@ import AllApp from "../Page/AllApp/AllApp";
 import InstallsApp from "../Page/InstallsApp/InstallsApp";
 import DetlicsSingleApp from "../Page/DetlicsSingleApp/DetlicsSingleApp";
 import AppLoder from "../Loder/AppLoder";
-import InstalPageError from "../Page/InstalPageError/InstalPageError";
 import imgad from "../assets/App-Error.png";
 import { Link } from "lucide-react";
 
@@ -20,7 +19,7 @@ export const router = createBrowserRouter([
         <div className="flex justify-center">
           <img className="mx-auto py-10 mt-10" src={imgad}></img>
         </div>
-        <NavLink to="/">
+        <NavLink to={-1}>
           <button className="  shadow-2xl btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white  text-center  px-12 text-lg">
             Back to Home
           </button>

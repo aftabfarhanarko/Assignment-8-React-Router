@@ -41,11 +41,11 @@ const DetlicsSingleApp = () => {
   return (
     <div className="max-w-[1250px] mx-auto ">
       <div className="p-2">
-        <div className="flex gap-5 p-1 md:gap-20  md:p-5 bg-base-300 mt-7 rounded-lg">
+        <div className=" md:flex gap-5 p-4 md:gap-20  md:p-5 bg-base-300 mt-7 rounded-lg">
           <div>
-            <img className="h-[280px] rounded-lg" src={findApp.image}></img>
+            <img className=" h-[220px] w-[100%] object-cover md:h-[280px] rounded-lg" src={findApp.image}></img>
           </div>
-          <div className="w-[70%]">
+          <div className=" w-[100%] md:w-[70%] text-center md:text-left mt-4 md:mt-0">
             <div>
               <h1 className="text-xl   md:text-3xl font-semibold">
                 Name : {findApp.title}
@@ -55,7 +55,7 @@ const DetlicsSingleApp = () => {
               </p>
             </div>
             <div className="divider mt-2"></div>
-            <div className="flex gap-5 md:gap-20">
+            <div className="flex gap-10 md:gap-20 justify-center md:justify-self-start ">
               <div className="justify-center flex text-center items-center ">
                 <div className="flex flex-col items-center">
                   <img className="w-[20px] md:w-[30px]" src={downlod}></img>

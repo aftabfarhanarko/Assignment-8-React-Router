@@ -1,14 +1,15 @@
 import React, { Suspense } from "react";
 import Display from "./Display";
 import TrindingApp from "../TrindingApp/TrindingApp";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import AppLoder from "../../Loder/AppLoder";
 import { TrendingUp } from 'lucide-react';
+import useProducts from "../../Components/LodingSpiner/lodingSpiner";
 
 
 const Home = () => {
-  const appData = useLoaderData();
-
+   const {producat}  =useProducts()
+   const slicesData = producat.slice(0,8);
 
   return (
     <div>
@@ -25,7 +26,7 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-1  lg:grid-cols-4 md:grid-cols-3 gap-7 px-4   md:px-2 lg:px-0">
-          {appData.map((data) => (
+          {slicesData.map((data) => (
             <Suspense fallback={<AppLoder></AppLoder>}>
               <TrindingApp data={data} key={data.id}></TrindingApp>
             </Suspense>
