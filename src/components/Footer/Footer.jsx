@@ -61,7 +61,7 @@ const Footer = () => {
           </nav>
           <aside>
             <p className="text-xl md:text-2xl">
-              Copyright © {new Date().getFullYear()} - We Build Productive Apps . Developed by 
+              Copyright © {new Date().getFullYear()} - We Build Productive Apps . Developed by 
               Aftab Farhan ARKO
             </p>
           </aside>
