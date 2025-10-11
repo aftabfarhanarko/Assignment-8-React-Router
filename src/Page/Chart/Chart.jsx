@@ -27,7 +27,7 @@ const Chart = ({ app }) => {
     return null;
   };
   return (
-    <div className="  rounded-lg shadow-sm bg-white">
+    <div className="  rounded-lg shadow-sm bg-white mt-10">
       <ResponsiveContainer width="100%" height={400}>
         <BarChart
           layout="vertical"

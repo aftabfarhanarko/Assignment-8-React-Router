@@ -60,9 +60,11 @@ const Footer = () => {
             </div>
           </nav>
           <aside>
-            <p className="text-2xl">
-              Copyright © {new Date().getFullYear()} - All right reserved by
-              HomeDecor Ltd
+            <p className="text-xl md:text-2xl">
+              Copyright © {new Date().getFullYear()} - We Build Productive Apps . Developed by 
+              Aftab Farhan ARKO
+
+
             </p>
           </aside>
         </footer>

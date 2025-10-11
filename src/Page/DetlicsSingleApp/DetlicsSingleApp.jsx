@@ -50,7 +50,7 @@ const DetlicsSingleApp = () => {
           <div className="flex gap-5 md:gap-20">
             <div className="justify-center flex text-center items-center ">
               <div className="flex flex-col items-center">
-                <img className="w-[20px] " src={downlod}></img>
+                <img className="w-[20px] md:w-[30px]" src={downlod}></img>
                 <p className="text-[14px] md:text-md mt-2 font-medium text-gray-700">
                   Downloads
                 </p>
@@ -62,7 +62,7 @@ const DetlicsSingleApp = () => {
 
             <div className="justify-center flex text-center items-center ">
               <div className="flex flex-col items-center">
-                <img className="w-[20px]" src={reating}></img>
+                <img className="w-[20px] md:w-[30px]" src={reating}></img>
                 <p className="text-[14px] md:text-md  mt-2 font-medium  text-gray-700">
                   Ratings
                 </p>
@@ -74,7 +74,7 @@ const DetlicsSingleApp = () => {
 
             <div className="justify-center flex text-center items-center ">
               <div className="flex flex-col items-center">
-                <img className="w-[20px]" src={like}></img>
+                <img className="w-[20px] md:w-[30px]" src={like}></img>
                 <p className="text-[14px] md:text-md mt-2 font-medium  text-gray-700">
                   Reviews
                 </p>
