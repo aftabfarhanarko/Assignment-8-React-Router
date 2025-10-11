@@ -1,17 +1,18 @@
 import React, { Suspense, useState } from "react";
-import { useLoaderData } from "react-router";
 import DisplayAllApp from "./DisplayAllApp";
 import { Search } from "lucide-react";
 import NotFound from "./NotFound";
-
+import useProducts from "../../Components/LodingSpiner/lodingSpiner";
+// appData
 const AllApp = () => {
-  const appData = useLoaderData();
+  
+  const {producat, loding, error}  =useProducts()
   const [search, setSearch] = useState("");
 
   const trimUser = search.trim().toLowerCase();
   const conDItions = trimUser
-    ? appData.filter((app) => app.title.toLowerCase().includes(trimUser))
-    : appData;
+    ? producat.filter((app) => app.title.toLowerCase().includes(trimUser))
+    : producat;
 
   return (
     <div className="max-w-[1250px] mx-auto ">
@@ -24,7 +25,7 @@ const AllApp = () => {
         </p>
       </div>
       <div className="flex justify-between items-center mt-10 px-2 md:px-0">
-        <h1 className="text-xl font-semibold">({appData.length}) Apps Found</h1>
+        <h1 className="text-xl font-semibold">({producat.length}) Apps Found</h1>
         <form>
           <label className="input">
             <Search className="w-5" />

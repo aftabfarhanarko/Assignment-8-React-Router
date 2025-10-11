@@ -1,16 +1,33 @@
 import React from "react";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, NavLink } from "react-router";
 import Root from "../Root/Root";
 import Error from "../Error/Error";
 import Home from "../Page/Home/Home";
 import AllApp from "../Page/AllApp/AllApp";
 import InstallsApp from "../Page/InstallsApp/InstallsApp";
 import DetlicsSingleApp from "../Page/DetlicsSingleApp/DetlicsSingleApp";
+import AppLoder from "../Loder/AppLoder";
+import InstalPageError from "../Page/InstalPageError/InstalPageError";
+import imgad from "../assets/App-Error.png";
+import { Link } from "lucide-react";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: (
+      <div className="text-center">
+        <div className="flex justify-center">
+          <img className="mx-auto py-10 mt-10" src={imgad}></img>
+        </div>
+        <NavLink to="/">
+          <button className="  shadow-2xl btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white  text-center  px-12 text-lg">
+            Back to Home
+          </button>
+        </NavLink>
+      </div>
+    ),
+    hydrateFallbackElement: <AppLoder></AppLoder>,
     children: [
       {
         index: true,
@@ -22,7 +39,6 @@ export const router = createBrowserRouter([
         path: "/allApp",
         loader: () => fetch("/allapp.json"),
         Component: AllApp,
-        
       },
       {
         path: "/install",

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 const AppLoder = () => {
-    return (
-        <div>
-            <span className="loading loading-spinner loading-xl"></span>
-
-        </div>
-    );
+  return (
+    <div className="min-h-[70vh] flex flex-col justify-center items-center gap-4 bg-gray-50">
+      <div className="h-12 w-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      <p className="text-blue-600 font-semibold">Loading...</p>
+    </div>
+  );
 };
 
 export default AppLoder;
