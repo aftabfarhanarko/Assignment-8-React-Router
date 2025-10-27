@@ -8,6 +8,8 @@ import { getItem, setItems } from "../../Components/VanilaJS/vanilajs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Chart from "../Chart/Chart";
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
 
 const DetlicsSingleApp = () => {
   const [buton, setButon] = useState(false);
@@ -23,6 +25,11 @@ const DetlicsSingleApp = () => {
     setButon(findes);
     console.log(findes);
   }, []);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.4,
+  });
 
   const handelButton = (app) => {
     setButon(true);
@@ -43,7 +50,10 @@ const DetlicsSingleApp = () => {
       <div className="p-2">
         <div className=" md:flex gap-5 p-4 md:gap-20  md:p-5 bg-base-300 mt-7 rounded-lg">
           <div>
-            <img className=" h-[220px] w-[100%] object-cover md:h-[280px] rounded-lg" src={findApp.image}></img>
+            <img
+              className=" h-[220px] w-[100%] object-cover md:h-[280px] rounded-lg"
+              src={findApp.image}
+            ></img>
           </div>
           <div className=" w-[100%] md:w-[70%] text-center md:text-left mt-4 md:mt-0">
             <div>
@@ -56,14 +66,27 @@ const DetlicsSingleApp = () => {
             </div>
             <div className="divider mt-2"></div>
             <div className="flex gap-10 md:gap-20 justify-center md:justify-self-start ">
-              <div className="justify-center flex text-center items-center ">
+              <div
+                ref={ref}
+                className="justify-center flex text-center items-center "
+              >
                 <div className="flex flex-col items-center">
                   <img className="w-[20px] md:w-[30px]" src={downlod}></img>
                   <p className="text-[14px] md:text-md mt-2 font-medium text-gray-700">
                     Downloads
                   </p>
                   <h2 className="text-xl md:text-4xl font-bold  md:mt-3 text-purple-600">
-                    {findApp.downloads}
+                    {inView ? (
+                      <CountUp
+                        start={0}
+                        end={parseFloat(findApp.downloads)} 
+                        duration={2.5}
+                        decimals={1}
+                        suffix="M"
+                      />
+                    ) : (
+                      <span>{findApp.downloads}M</span>
+                    )}
                   </h2>
                 </div>
               </div>
@@ -75,7 +98,16 @@ const DetlicsSingleApp = () => {
                     Ratings
                   </p>
                   <h2 className="text-xl md:text-4xl font-bold  md:mt-3 text-purple-600">
-                    {findApp.ratingAvg}
+                    {inView ? (
+                      <CountUp
+                        end={Number(findApp.ratingAvg)}
+                        duration={2}
+                        decimals={1}
+                        suffix=""
+                      />
+                    ) : (
+                      <span> {findApp.ratingAvg}</span>
+                    )}
                   </h2>
                 </div>
               </div>
@@ -87,18 +119,27 @@ const DetlicsSingleApp = () => {
                     Reviews
                   </p>
                   <h2 className="text-lg md:text-4xl  font-bold md:mt-3 text-purple-600">
-                    {findApp.reviews}K
+                    {inView ? (
+                      <CountUp
+                        end={Number(findApp.reviews)}
+                        duration={3}
+                        decimals={1}
+                        suffix="K"
+                      />
+                    ) : (
+                      <span> {findApp.reviews}</span>
+                    )}
                   </h2>
                 </div>
               </div>
             </div>
-             <button
-             disabled={buton}
-             onClick={() => handelButton(findApp)}
-           className="btn btn-accent md:px-6 text-[15px] md:text-lg text-white text-lg font-semibold mt-5 shadow-2xl"
-           >
-            {buton ? "Install" : `Install Now (${findApp.size} MB)`}
-          </button>
+            <button
+              disabled={buton}
+              onClick={() => handelButton(findApp)}
+              className="btn btn-accent md:px-6 text-[15px] md:text-lg text-white text-lg font-semibold mt-5 shadow-2xl"
+            >
+              {buton ? "Install" : `Install Now (${findApp.size} MB)`}
+            </button>
           </div>
         </div>
       </div>
