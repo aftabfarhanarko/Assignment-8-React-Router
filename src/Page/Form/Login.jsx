@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  const {loginUser} = useContext(AuthContext);
+
+  const handelLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email?.value;
+    const password = e.target.password.value;
+    loginUser(email, password) 
+    .then((result) => {
+        console.log(result.user)
+        toast.success("User Login Successfully")
+    }).catch(err => {
+        console.log(err);
+    })
+  } 
   return (
     <div className="flex justify-center items-center min-h-screen px-2">
       <title>Login From</title>
@@ -14,7 +30,7 @@ const Login = () => {
             Login your account
           </h1>
 
-          <form onSubmit={""}>
+          <form onSubmit={handelLogin}>
             <fieldset className="fieldset">
               {/* Email */}
               <label className="label font-semibold">Email address</label>

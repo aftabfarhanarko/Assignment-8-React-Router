@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebase.config';
 
 const ContextProvider = ({children}) => {
@@ -14,10 +14,15 @@ const ContextProvider = ({children}) => {
         return sendEmailVerification(auth.currentUser);
     }
 
+
+    const loginUser = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    }
     const info = {
       creatUser,
       profileUbdeat,
-      emailVeryFi
+      emailVeryFi,
+      loginUser
     }
 
     return (

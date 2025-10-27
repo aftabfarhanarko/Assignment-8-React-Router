@@ -14,6 +14,13 @@ const Register = () => {
     const displayName = e.target.name?.value;
     const photoURL = e.target.photo.value;
     const password = e.target.password.value;
+
+    const myPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{6,}$/;
+    if(!myPass.test(password)){
+        toast.error("Password must be 6+ chars with upper, lower & special character.");
+        return;
+    }
+
     const userData = {
       displayName,
       photoURL,
