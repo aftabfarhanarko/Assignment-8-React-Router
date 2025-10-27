@@ -20,10 +20,8 @@ const DetlicsSingleApp = () => {
 
   useEffect(() => {
     const getItems = getItem();
-    console.log(getItems);
     const findes = getItems.find((app) => app.id == id);
     setButon(findes);
-    console.log(findes);
   }, []);
 
   const { ref, inView } = useInView({

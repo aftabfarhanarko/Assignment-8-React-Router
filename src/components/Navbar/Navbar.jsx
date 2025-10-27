@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../index.css";
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo.png";
 import { HousePlus } from "lucide-react";
 import { Webhook } from "lucide-react";
 import { FaBeer } from "react-icons/fa";
+import { AuthContext } from "../../context/AuthContext";
+import { toast, ToastContainer } from "react-toastify";
 
 const Navbar = () => {
+  const { user ,logOutUser} = useContext(AuthContext);
+
+  const handelLogOut = () => {
+    logOutUser()
+    .then(() => {
+      toast.success("Logout User Successfully")
+    })
+  }
   const link = (
     <>
       <NavLink to="/" className="flex  items-center">
@@ -68,15 +78,27 @@ const Navbar = () => {
           <ul className="menu menu-horizontal ">{link}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/auth/login">
-           <button className="btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white border-black">
-            Login
-           </button>
-          </Link>
-
-      
+          {user ? (
+            <button onClick={handelLogOut} className="btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white border-black">
+              LogOut
+            </button>
+          ) : (
+            <div>
+              <Link to="/auth/login">
+                <button className="btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white border-black">
+                  Login
+                </button>
+              </Link>
+              <Link to="/auth/rigister">
+                <button className="ml-4 btn bg-gradient-to-tr from-[#632EE3] to-[#9F62F2] text-white border-black">
+                  Register
+                </button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

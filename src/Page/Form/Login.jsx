@@ -1,26 +1,42 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
+  const reaferncve = useRef(null);
   const [show, setShow] = useState(false);
-  const {loginUser} = useContext(AuthContext);
+  const { loginUser, user, passwordResetEmail } = useContext(AuthContext);
+  const locations = useLocation();
+  const nagvit = useNavigate();
 
   const handelLogin = (e) => {
     e.preventDefault();
     const email = e.target.email?.value;
     const password = e.target.password.value;
-    loginUser(email, password) 
-    .then((result) => {
-        console.log(result.user)
-        toast.success("User Login Successfully")
-    }).catch(err => {
-        console.log(err);
-    })
-  } 
+    loginUser(email, password)
+      .then(() => {
+        toast.success("User Login Successfully");
+        nagvit(`${locations.state ? locations.state : "/"}`);
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      });
+  };
+
+  const handelForget = () => {
+    const email = reaferncve.current?.value;
+    passwordResetEmail(email)
+      .then(() => {
+        toast.success("Your Password Reset Email Provied Now");
+      })
+      .catch(() => {
+        toast.error("Error Now");
+      });
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen px-2">
       <title>Login From</title>
@@ -35,6 +51,7 @@ const Login = () => {
               {/* Email */}
               <label className="label font-semibold">Email address</label>
               <input
+                ref={reaferncve}
                 name="email"
                 type="email"
                 className="input"
@@ -62,7 +79,11 @@ const Login = () => {
 
               {/* Forgot password */}
               <div>
-                <button type="button" onClick={""} className="link link-hover">
+                <button
+                  type="button"
+                  onClick={handelForget}
+                  className="link link-hover"
+                >
                   Forgot password?
                 </button>
               </div>
@@ -100,6 +121,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -12,6 +12,7 @@ import { Link } from "lucide-react";
 import Auth from "../Page/Form/Auth";
 import Login from "../Page/Form/Login";
 import Register from "../Page/Form/Register";
+import PrivetRouter from "../provider/PrivetRouter";
 
 export const router = createBrowserRouter([
   {
@@ -40,17 +41,29 @@ export const router = createBrowserRouter([
       {
         path: "/allApp",
         loader: () => fetch("/allapp.json"),
-        Component: AllApp,
+        element: (
+          <PrivetRouter>
+            <AllApp></AllApp>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/install",
         loader: () => fetch("/allapp.json"),
-        Component: InstallsApp,
+        element: (
+          <PrivetRouter>
+            <InstallsApp></InstallsApp>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/appDetlics/:id",
         loader: () => fetch("/allapp.json"),
-        Component: DetlicsSingleApp,
+        element: (
+          <PrivetRouter>
+            <DetlicsSingleApp></DetlicsSingleApp>
+          </PrivetRouter>
+        ),
       },
       {
         path: "*",
@@ -59,17 +72,17 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path:"/auth",
-    element:<Auth></Auth>,
-    children:[
+    path: "/auth",
+    element: <Auth></Auth>,
+    children: [
       {
-        path:"/auth/login",
-        element:<Login></Login>
+        path: "/auth/login",
+        element: <Login></Login>,
       },
       {
-        path:"/auth/rigister",
-        element:<Register></Register>
+        path: "/auth/rigister",
+        element: <Register></Register>,
       },
-    ]
-  }
+    ],
+  },
 ]);

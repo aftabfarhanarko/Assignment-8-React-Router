@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import { Outlet } from 'react-router';
+import { ToastContainer } from 'react-toastify';
 
 const Auth = () => {
     return (
@@ -16,6 +17,7 @@ const Auth = () => {
             <footer className='mt-10'>
                 <Footer></Footer>
             </footer>
+             <ToastContainer />
         </div>
     );
 };

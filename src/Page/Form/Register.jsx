@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash, FaRegUser } from "react-icons/fa";
 import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -16,9 +16,11 @@ const Register = () => {
     const password = e.target.password.value;
 
     const myPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{6,}$/;
-    if(!myPass.test(password)){
-        toast.error("Password must be 6+ chars with upper, lower & special character.");
-        return;
+    if (!myPass.test(password)) {
+      toast.error(
+        "Password must be 6+ chars with upper, lower & special character."
+      );
+      return;
     }
 
     const userData = {
@@ -27,8 +29,7 @@ const Register = () => {
     };
 
     creatUser(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
         toast.success("User Account Creat Successfully");
         profileUbdeat(userData).then(() => {
           emailVeryFi().then(() => {
@@ -37,7 +38,7 @@ const Register = () => {
         });
       })
       .catch((err) => {
-        console.log(err.code);
+        toast.error(err.message);
       });
   };
   return (
@@ -128,6 +129,7 @@ const Register = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
