@@ -2,73 +2,94 @@ import { Link } from "lucide-react";
 import React from "react";
 import { NavLink } from "react-router";
 import "../../App.css";
+import email from '../../assets/email.png'
+import fac from '../../assets/facbook.png'
+import twiter from '../../assets/twiter.png'
+import link from '../../assets/linkdin.png'
 
 const Footer = () => {
   return (
-    <div className="mt-20 bg-base-300">
-      <div className="max-w-[1250px] mx-auto">
-        <footer className="footer footer-horizontal footer-center text-base-content rounded p-10  px-5 md:px-0  ">
-          <nav className="grid grid-flow-col gap-4">
-            <NavLink to="/">
-              <p className="m-2 text-[15px] md:text-lg font-medium ">Home</p>
-            </NavLink>
-            <NavLink to="/allApp">
-              <p className="m-2 text-[15px] md:text-lg font-medium ">Apps</p>
-            </NavLink>
-            <NavLink to="/appDetlics">
-              <p className="m-2 text-[15px] md:text-lg font-medium ">App Detlics</p>
-            </NavLink>
-            <NavLink to="/install">
-              <p className="m-2 text-[15px] md:text-lg font-medium ">Installation</p>
-            </NavLink>
+    <div>
+      <div className="bg-black mt-7">
+        <footer className=" flex-col-1 justify-between md:flex-row container mx-auto footer sm:footer-horizontal  p-10 text-white">
+          <nav>
+            <h6 className="footer-title">
+             Hero IO — your all-in-one productivity companion.
+            </h6>
+            <p className="max-w-[400px]">
+              Hero IO — your all-in-one productivity companion. Organize your
+              thoughts and turn ideas into action. Plan smarter and stay ahead
+              of every deadline. Collaborate effortlessly with your team in real
+              time. Manage tasks, set reminders, and track your progress. Sync
+            
+            </p>
           </nav>
           <nav>
-            <div className="grid grid-flow-col gap-4">
-              <a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-current"
+            <h6 className="footer-title">Conteact</h6>
+            <p>Home</p>
+            <p>App</p>
+            <p>Install App</p>
+          </nav>
+
+          <nav>
+            <h6 className="footer-title">Quick Links</h6>
+            <a className="link link-hover">Privacy Policy</a>
+            <a className="link link-hover">Terms & Conditions</a>
+            <a className="link link-hover">Join Us</a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Services</h6>
+            <a href="/" className="link link-hover">
+              About
+            </a>
+            <a href="/" className="link link-hover">
+              Contact
+            </a>
+            <a href="/" className="link link-hover">
+              Profile
+            </a>
+          </nav>
+          <nav>
+            <h6 className="footer-title">Social Media Conteact</h6>
+
+            <div className="flex gap-5 items-center">
+              <div className="flex gap-2">
+                <a
+                  href="https://github.com/aftabfarhanarko"
+                  className="link link-hover"
                 >
-                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                </svg>
-              </a>
-              <a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-current"
+                  <img src={email}></img>
+                </a>
+              </div>
+              <div className="flex gap-2">
+                <a
+                  href="https://www.linkedin.com/in/aftabfarhan/"
+                  className="link link-hover"
                 >
-                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-                </svg>
-              </a>
-              <a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  className="fill-current"
+                  <img src={link}></img>
+                </a>
+              </div>
+              <div className="flex gap-2">
+                <a
+                  href=" https://www.facebook.com/profile"
+                  className="link link-hover"
                 >
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                </svg>
-              </a>
+                  <img src={fac}></img>
+                </a>
+              </div>
+              <div className="flex gap-2">
+                <a href="https://x.com/home" className="link link-hover"></a>
+                <img src={twiter}></img>
+              </div>
             </div>
           </nav>
-          <aside>
-            <p className="text-xl md:text-2xl">
-              Copyright © {new Date().getFullYear()} - We Build Productive Apps . Developed by 
-              Aftab Farhan ARKO
-            </p>
-          </aside>
         </footer>
+        <p className="text-white text-center py-6 border-t border-gray-400">
+          © 2025 GreenNest. All rights reserved
+        </p>
       </div>
     </div>
   );
 };
 // cd dist  surge
-export default Footer; 
+export default Footer;

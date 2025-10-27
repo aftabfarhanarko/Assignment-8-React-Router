@@ -9,6 +9,9 @@ import DetlicsSingleApp from "../Page/DetlicsSingleApp/DetlicsSingleApp";
 import AppLoder from "../Loder/AppLoder";
 import imgad from "../assets/App-Error.png";
 import { Link } from "lucide-react";
+import Auth from "../Page/Form/Auth";
+import Login from "../Page/Form/Login";
+import Register from "../Page/Form/Register";
 
 export const router = createBrowserRouter([
   {
@@ -55,4 +58,18 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:"/auth",
+    element:<Auth></Auth>,
+    children:[
+      {
+        path:"/auth/login",
+        element:<Login></Login>
+      },
+      {
+        path:"/auth/rigister",
+        element:<Register></Register>
+      },
+    ]
+  }
 ]);

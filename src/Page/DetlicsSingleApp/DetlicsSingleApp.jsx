@@ -79,7 +79,7 @@ const DetlicsSingleApp = () => {
                     {inView ? (
                       <CountUp
                         start={0}
-                        end={parseFloat(findApp.downloads)} 
+                        end={parseFloat(findApp.downloads)}
                         duration={2.5}
                         decimals={1}
                         suffix="M"

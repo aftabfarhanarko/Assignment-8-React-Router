@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ArrowDownToLine } from "lucide-react";
 
 import reating from "../../assets/icon-ratings.png";
 import { Link } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TrindingApp = ({ data }) => {
-  const { image, title, downloads, ratingAvg,id } = data;
-
+  const { image, title, downloads, ratingAvg, id } = data;
+useEffect(() => {
+      AOS.init({
+        duration: 1000,
+        offset: 100,
+        once: true,
+      });
+      AOS.refresh();
+    }, []);
   return (
     <Link to={`/appDetlics/${id}`}>
-      <div className="mt-10 bg-base-300 shadow-xl rounded-lg transition-transform duration-400 hover:-translate-y-10 md:hover:-translate-y-5 hover:shadow-2xl ">
+      <div data-aos="fade-up" className="mt-10 bg-base-300 shadow-xl rounded-lg hover:shadow-2xl ">
         <div className="p-5">
           <img className="rounded-lg h-[290px] w-full" src={image}></img>
           <h2 className="mt-2 text-lg font-semibold">Name : {title}</h2>
@@ -29,7 +38,7 @@ const TrindingApp = ({ data }) => {
           </div>
         </div>
       </div>
-    </Link> 
+    </Link>
   );
 };
 
