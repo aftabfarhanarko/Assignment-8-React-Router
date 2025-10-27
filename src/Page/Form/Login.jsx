@@ -8,7 +8,8 @@ import { toast, ToastContainer } from "react-toastify";
 const Login = () => {
   const reaferncve = useRef(null);
   const [show, setShow] = useState(false);
-  const { loginUser, user, passwordResetEmail } = useContext(AuthContext);
+  const { loginUser, user, passwordResetEmail, googleProvider } =
+    useContext(AuthContext);
   const locations = useLocation();
   const nagvit = useNavigate();
 
@@ -22,7 +23,7 @@ const Login = () => {
         nagvit(`${locations.state ? locations.state : "/"}`);
       })
       .catch((err) => {
-        toast.error(err.message)
+        toast.error(err.message);
       });
   };
 
@@ -35,6 +36,12 @@ const Login = () => {
       .catch(() => {
         toast.error("Error Now");
       });
+  };
+
+  const handelGoogle = () => {
+    googleProvider().then(() => {
+      nagvit(`${locations.state ? locations.state : "/"}`);
+    });
   };
 
   return (
@@ -99,7 +106,7 @@ const Login = () => {
                 Login
               </button>
               <button
-                onClick={""}
+                onClick={handelGoogle}
                 type="button"
                 className="btn bg-gradient-to-r from-lime-400 via-emerald-500 to-green-400 shadow-lg text-white "
               >

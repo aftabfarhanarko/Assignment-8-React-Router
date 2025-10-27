@@ -8,46 +8,52 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+
+const provider = new GoogleAuthProvider();
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loder, setLoder] = useState(true);
 
   const creatUser = (email, password) => {
-    setLoder(true)
+    setLoder(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const profileUbdeat = (userData) => {
-     setLoder(true)
+    setLoder(true);
     return updateProfile(auth.currentUser, userData);
   };
   const emailVeryFi = () => {
-     setLoder(true)
+    setLoder(true);
     return sendEmailVerification(auth.currentUser);
   };
 
   const loginUser = (email, password) => {
-     setLoder(true)
+    setLoder(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const passwordResetEmail = (email) => {
-     setLoder(true)
-    return sendPasswordResetEmail(auth, email)
-  }
+    setLoder(true);
+    return sendPasswordResetEmail(auth, email);
+  };
 
   const logOutUser = () => {
-     setLoder(true)
+    setLoder(true);
     return signOut(auth);
-  }
+  };
 
+  const googleProvider = () => {
+    return signInWithPopup(auth, provider);
+  };
   useEffect(() => {
-    
     const unsubcripet = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-       setLoder(false)
+      setLoder(false);
     });
 
     return () => unsubcripet();
@@ -61,7 +67,8 @@ const ContextProvider = ({ children }) => {
     user,
     passwordResetEmail,
     logOutUser,
-    loder
+    loder,
+    googleProvider
   };
 
   return <AuthContext.Provider value={info}>{children}</AuthContext.Provider>;
