@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   Zap, Shield, Smartphone, HelpCircle, Mail, MapPin, Phone, Send, 
   Loader2, CheckCircle, AlertCircle, ArrowRight, Star, 
-  Download, Globe, Layers, Users, Play, ChevronDown, Check,
+  Download, Globe, Layers, Users, User, MessageSquare, Play, ChevronDown, Check,
   CreditCard, Layout, Cpu
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -422,50 +422,69 @@ export const Contact = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-[2.5rem] blur-2xl opacity-10 transform rotate-3" />
             <form onSubmit={handleSubmit} className="relative bg-base-100/80 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-white/20">
-              <h3 className="text-2xl font-bold mb-8">Send us a Message</h3>
+              <h3 className="text-3xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Send Message</h3>
+              <p className="text-base-content/60 mb-8">We'll get back to you within 24 hours.</p>
               
               <div className="space-y-6">
-                <div className="form-control">
-                  <label className="label text-sm font-bold text-base-content/70 ml-1">Name</label>
-                  <input 
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    type="text" 
-                    placeholder="John Doe"
-                    className="input input-lg bg-base-200/50 border-transparent focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl transition-all" 
-                    required 
-                  />
+                <div className="group">
+                  <label className="label text-xs font-bold text-base-content/50 uppercase tracking-wider mb-1 ml-1 group-focus-within:text-primary transition-colors">Full Name</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
+                      <User size={20} />
+                    </div>
+                    <input 
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      type="text" 
+                      placeholder="John Doe"
+                      className="input input-lg w-full pl-12 bg-base-200/30 backdrop-blur-sm border-base-content/10 focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl transition-all duration-300 font-medium placeholder:text-base-content/20" 
+                      required 
+                    />
+                  </div>
                 </div>
                 
-                <div className="form-control">
-                  <label className="label text-sm font-bold text-base-content/70 ml-1">Email</label>
-                  <input 
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    type="email" 
-                    placeholder="john@example.com"
-                    className="input input-lg bg-base-200/50 border-transparent focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl transition-all" 
-                    required 
-                  />
+                <div className="group">
+                  <label className="label text-xs font-bold text-base-content/50 uppercase tracking-wider mb-1 ml-1 group-focus-within:text-primary transition-colors">Email Address</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
+                      <Mail size={20} />
+                    </div>
+                    <input 
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      type="email" 
+                      placeholder="john@example.com"
+                      className="input input-lg w-full pl-12 bg-base-200/30 backdrop-blur-sm border-base-content/10 focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl transition-all duration-300 font-medium placeholder:text-base-content/20" 
+                      required 
+                    />
+                  </div>
                 </div>
                 
-                <div className="form-control">
-                  <label className="label text-sm font-bold text-base-content/70 ml-1">Message</label>
-                  <textarea 
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    placeholder="How can we help you?"
-                    className="textarea textarea-lg bg-base-200/50 border-transparent focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl h-40 resize-none transition-all leading-relaxed" 
-                    required 
-                  />
+                <div className="group">
+                  <label className="label text-xs font-bold text-base-content/50 uppercase tracking-wider mb-1 ml-1 group-focus-within:text-primary transition-colors">Your Message</label>
+                  <div className="relative">
+                    <div className="absolute top-4 left-0 pl-4 flex pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
+                      <MessageSquare size={20} />
+                    </div>
+                    <textarea 
+                      value={formData.message}
+                      onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      placeholder="How can we help you?"
+                      className="textarea textarea-lg w-full pl-12 bg-base-200/30 backdrop-blur-sm border-base-content/10 focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl h-40 resize-none transition-all duration-300 leading-relaxed font-medium placeholder:text-base-content/20" 
+                      required 
+                    />
+                  </div>
                 </div>
 
-                <button 
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   disabled={status === 'loading'}
-                  className="btn btn-primary btn-lg w-full rounded-2xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 mt-2"
+                  className="btn btn-primary btn-lg w-full rounded-2xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 mt-2 border-none relative overflow-hidden"
                 >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:animate-[shimmer_1.5s_infinite]" />
                   {status === 'loading' ? <Loader2 className="animate-spin" /> : <><Send size={20} /> Send Message</>}
-                </button>
+                </motion.button>
               </div>
               
               <AnimatePresence>
