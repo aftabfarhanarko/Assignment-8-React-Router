@@ -55,7 +55,7 @@ const AllApp = () => {
           </label>
         </form>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-3 md:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 px-3 md:px-0">
         {loding ? (
           <AppLoder></AppLoder>
         ) : filterProducat.length === 0 ? (

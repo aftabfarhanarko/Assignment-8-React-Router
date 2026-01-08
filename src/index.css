@@ -1,19 +1,24 @@
 @import "tailwindcss";
+@plugin "daisyui";
 @plugin "daisyui" {
-    themes: light --default;
-
+    themes: light --default, dark;
 };
 
+:root {
+  --primary: #632EE3;
+  --secondary: #9F62F2;
+  --neutral: #3D4451;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
 
 .active{
     border-bottom: 2px solid #7945f2;
 }
 
-
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
-
 
 .open-sans-font {
   font-family: "Open Sans", sans-serif;

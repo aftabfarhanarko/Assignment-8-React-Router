@@ -13,6 +13,7 @@ import Auth from "../Page/Form/Auth";
 import Login from "../Page/Form/Login";
 import Register from "../Page/Form/Register";
 import PrivetRouter from "../provider/PrivetRouter";
+import Dashbord from "../Components/Dashbord/Dashbord";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
             <DetlicsSingleApp></DetlicsSingleApp>
           </PrivetRouter>
         ),
+      },
+      {
+        path: "/dashbord",
+        element:<Dashbord ></Dashbord>
       },
       {
         path: "*",
