@@ -342,7 +342,7 @@ export const Newsletter = () => {
   );
 };
 
-// 9. Contact (Minimal)
+// 9. Contact (Premium)
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle');
@@ -357,73 +357,136 @@ export const Contact = () => {
   };
 
   return (
-    <div className="py-24 bg-base-100">
-      <div className="max-w-[1250px] mx-auto px-4 grid lg:grid-cols-2 gap-16">
-        <div>
-          <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
-          <p className="text-lg opacity-70 mb-10">Have a question or just want to say hi? We'd love to hear from you.</p>
-          
-          <div className="space-y-8">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-base-200 flex items-center justify-center"><Mail className="w-5 h-5" /></div>
-              <div>
-                <div className="font-bold">Email Us</div>
-                <div className="opacity-70">support@hero.io</div>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-               <div className="w-12 h-12 rounded-full bg-base-200 flex items-center justify-center"><MapPin className="w-5 h-5" /></div>
-              <div>
-                <div className="font-bold">Visit Us</div>
-                <div className="opacity-70">123 Tech Blvd, San Francisco, CA</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="py-32 relative overflow-hidden bg-base-100" id="contact">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-        <form onSubmit={handleSubmit} className="bg-base-200/50 p-8 rounded-3xl border border-base-200">
-          <div className="form-control mb-4">
-            <label className="label">Name</label>
-            <input 
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              type="text" 
-              className="input input-bordered bg-base-100 rounded-xl" 
-              required 
-            />
-          </div>
-          <div className="form-control mb-4">
-            <label className="label">Email</label>
-            <input 
-              value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-              type="email" 
-              className="input input-bordered bg-base-100 rounded-xl" 
-              required 
-            />
-          </div>
-          <div className="form-control mb-6">
-            <label className="label">Message</label>
-            <textarea 
-              value={formData.message}
-              onChange={(e) => setFormData({...formData, message: e.target.value})}
-              className="textarea textarea-bordered bg-base-100 h-32 rounded-xl" 
-              required 
-            />
-          </div>
-          <button 
-            disabled={status === 'loading'}
-            className="btn btn-primary w-full rounded-xl"
-          >
-            {status === 'loading' ? <Loader2 className="animate-spin" /> : 'Send Message'}
-          </button>
+      <div className="max-w-[1250px] mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          {status === 'success' && (
-            <div className="alert alert-success mt-4 rounded-xl">
-              <CheckCircle size={20} /> Message sent successfully!
+          {/* Left Column: Info */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-5xl font-black mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary leading-tight">
+              Get in Touch
+            </h2>
+            <p className="text-xl text-base-content/60 mb-12 max-w-lg leading-relaxed">
+              Have a question or just want to say hi? We'd love to hear from you. Our team is ready to answer all your questions.
+            </p>
+            
+            <div className="space-y-8">
+              <div className="group flex items-center gap-6 p-4 rounded-2xl hover:bg-base-200/50 transition-colors cursor-pointer">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary-focus text-white flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="font-bold text-lg mb-1">Email Us</div>
+                  <div className="text-base-content/60 group-hover:text-primary transition-colors">support@nexio.com</div>
+                </div>
+              </div>
+
+              <div className="group flex items-center gap-6 p-4 rounded-2xl hover:bg-base-200/50 transition-colors cursor-pointer">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary to-secondary-focus text-white flex items-center justify-center shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="font-bold text-lg mb-1">Visit Us</div>
+                  <div className="text-base-content/60 group-hover:text-secondary transition-colors">123 Tech Blvd, San Francisco, CA</div>
+                </div>
+              </div>
+
+              <div className="group flex items-center gap-6 p-4 rounded-2xl hover:bg-base-200/50 transition-colors cursor-pointer">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-accent-focus text-white flex items-center justify-center shadow-lg shadow-accent/30 group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="font-bold text-lg mb-1">Call Us</div>
+                  <div className="text-base-content/60 group-hover:text-accent transition-colors">+1 (555) 123-4567</div>
+                </div>
+              </div>
             </div>
-          )}
-        </form>
+          </motion.div>
+
+          {/* Right Column: Form */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-[2.5rem] blur-2xl opacity-10 transform rotate-3" />
+            <form onSubmit={handleSubmit} className="relative bg-base-100/80 backdrop-blur-xl p-8 md:p-10 rounded-[2.5rem] shadow-2xl border border-white/20">
+              <h3 className="text-2xl font-bold mb-8">Send us a Message</h3>
+              
+              <div className="space-y-6">
+                <div className="form-control">
+                  <label className="label text-sm font-bold text-base-content/70 ml-1">Name</label>
+                  <input 
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    type="text" 
+                    placeholder="John Doe"
+                    className="input input-lg bg-base-200/50 border-transparent focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl transition-all" 
+                    required 
+                  />
+                </div>
+                
+                <div className="form-control">
+                  <label className="label text-sm font-bold text-base-content/70 ml-1">Email</label>
+                  <input 
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
+                    type="email" 
+                    placeholder="john@example.com"
+                    className="input input-lg bg-base-200/50 border-transparent focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl transition-all" 
+                    required 
+                  />
+                </div>
+                
+                <div className="form-control">
+                  <label className="label text-sm font-bold text-base-content/70 ml-1">Message</label>
+                  <textarea 
+                    value={formData.message}
+                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    placeholder="How can we help you?"
+                    className="textarea textarea-lg bg-base-200/50 border-transparent focus:bg-base-100 focus:border-primary focus:ring-4 focus:ring-primary/10 rounded-2xl h-40 resize-none transition-all leading-relaxed" 
+                    required 
+                  />
+                </div>
+
+                <button 
+                  disabled={status === 'loading'}
+                  className="btn btn-primary btn-lg w-full rounded-2xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 mt-2"
+                >
+                  {status === 'loading' ? <Loader2 className="animate-spin" /> : <><Send size={20} /> Send Message</>}
+                </button>
+              </div>
+              
+              <AnimatePresence>
+                {status === 'success' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="alert alert-success mt-6 rounded-2xl shadow-lg"
+                  >
+                    <CheckCircle size={24} /> 
+                    <div>
+                      <h3 className="font-bold">Message Sent!</h3>
+                      <div className="text-xs">We'll get back to you shortly.</div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
