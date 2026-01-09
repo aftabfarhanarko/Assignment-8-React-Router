@@ -49,14 +49,14 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-base-100 py-12 px-4">
       <title>Login From</title>
-      
+
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] opacity-50 animate-pulse" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] opacity-50 animate-pulse delay-1000" />
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -64,10 +64,15 @@ const Login = () => {
       >
         <div className="card-body p-8 sm:p-10">
           <div className="text-center mb-8">
-            <motion.div 
+            <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                delay: 0.1,
+              }}
               className="w-16 h-16 bg-gradient-to-tr from-primary to-secondary rounded-2xl mx-auto flex items-center justify-center text-white mb-4 shadow-lg shadow-primary/30"
             >
               <LogIn size={32} />
@@ -75,14 +80,18 @@ const Login = () => {
             <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
               Welcome Back
             </h1>
-            <p className="text-base-content/60 font-medium">Enter your details to access your account</p>
+            <p className="text-base-content/60 font-medium">
+              Enter your details to access your account
+            </p>
           </div>
 
           <form onSubmit={handelLogin} className="space-y-6">
             <fieldset className="fieldset p-0 border-none bg-transparent m-0 gap-6">
               {/* Email */}
               <div className="form-control w-full">
-                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">Email Address</label>
+                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">
+                  Email Address
+                </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
                     <Mail size={20} />
@@ -100,7 +109,9 @@ const Login = () => {
 
               {/* Password */}
               <div className="form-control w-full">
-                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">Password</label>
+                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">
+                  Password
+                </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
                     <Lock size={20} />
@@ -142,18 +153,23 @@ const Login = () => {
                   Sign In <ArrowRight size={20} />
                 </span>
               </motion.button>
-              
+
               <div className="relative py-2">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-base-content/10"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-4 bg-base-100 text-base-content/50 font-medium">Or continue with</span>
+                  <span className="px-4 bg-base-100 text-base-content/50 font-medium">
+                    Or continue with
+                  </span>
                 </div>
               </div>
 
               <motion.button
-                whileHover={{ scale: 1.02, backgroundColor: "rgba(var(--b2), 0.8)" }}
+                whileHover={{
+                  scale: 1.02,
+                  backgroundColor: "rgba(var(--b2), 0.8)",
+                }}
                 whileTap={{ scale: 0.98 }}
                 onClick={handelGoogle}
                 type="button"
