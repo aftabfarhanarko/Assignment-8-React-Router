@@ -4,7 +4,14 @@ import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
-import { User, Image as ImageIcon, Mail, Lock, UserPlus, ArrowRight } from "lucide-react";
+import {
+  User,
+  Image as ImageIcon,
+  Mail,
+  Lock,
+  UserPlus,
+  ArrowRight,
+} from "lucide-react";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -46,14 +53,14 @@ const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-base-100 py-12 px-4">
       <title>Register From</title>
-      
+
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] opacity-50 animate-pulse" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] opacity-50 animate-pulse delay-1000" />
       </div>
 
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -61,10 +68,15 @@ const Register = () => {
       >
         <div className="card-body p-8 sm:p-10">
           <div className="text-center mb-8">
-            <motion.div 
+            <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+              transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                delay: 0.1,
+              }}
               className="w-16 h-16 bg-gradient-to-tr from-primary to-secondary rounded-2xl mx-auto flex items-center justify-center text-white mb-4 shadow-lg shadow-primary/30"
             >
               <UserPlus size={32} />
@@ -72,14 +84,18 @@ const Register = () => {
             <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2">
               Create Account
             </h1>
-            <p className="text-base-content/60 font-medium">Join us and start your journey</p>
+            <p className="text-base-content/60 font-medium">
+              Join us and start your journey
+            </p>
           </div>
 
           <form onSubmit={handelRegister} className="space-y-6">
             <fieldset className="fieldset p-0 border-none bg-transparent m-0 gap-5">
               {/* Name */}
               <div className="form-control w-full">
-                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">Full Name</label>
+                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">
+                  Full Name
+                </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
                     <User size={20} />
@@ -96,7 +112,9 @@ const Register = () => {
 
               {/* Photo Url */}
               <div className="form-control w-full">
-                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">Photo URL</label>
+                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">
+                  Photo URL
+                </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
                     <ImageIcon size={20} />
@@ -113,7 +131,9 @@ const Register = () => {
 
               {/* Email */}
               <div className="form-control w-full">
-                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">Email Address</label>
+                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">
+                  Email Address
+                </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
                     <Mail size={20} />
@@ -130,7 +150,9 @@ const Register = () => {
 
               {/* Password */}
               <div className="form-control w-full">
-                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">Password</label>
+                <label className="label text-sm font-bold text-base-content/70 mb-1 ml-1">
+                  Password
+                </label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-base-content/40 group-focus-within:text-primary transition-colors">
                     <Lock size={20} />
@@ -160,14 +182,16 @@ const Register = () => {
                     defaultChecked
                     className="checkbox checkbox-primary rounded-xl"
                   />
-                  <span className="label-text font-medium text-base-content/70">Remember me</span>
+                  <span className="label-text font-medium text-base-content/70">
+                    Remember me
+                  </span>
                 </label>
               </div>
 
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                type="submit" 
+                type="submit"
                 className="btn btn-primary h-12 w-full rounded-2xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 border-none text-lg font-bold relative overflow-hidden group mt-2"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
@@ -175,10 +199,13 @@ const Register = () => {
                   Register <ArrowRight size={20} />
                 </span>
               </motion.button>
-              
+
               <p className="text-center text-sm font-medium text-base-content/60 mt-4">
                 Already have an account?{" "}
-                <Link className="text-primary hover:text-primary-focus font-bold hover:underline transition-all ml-1" to="/auth/login">
+                <Link
+                  className="text-primary hover:text-primary-focus font-bold hover:underline transition-all ml-1"
+                  to="/auth/login"
+                >
                   Sign In
                 </Link>
               </p>

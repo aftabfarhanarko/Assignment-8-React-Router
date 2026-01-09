@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router/dom";
 import { router } from "./Router/Router";
 import ContextProvider from "./context/ContextProvider";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ToastContainer } from "react-toastify";
 
 import {
@@ -29,6 +30,7 @@ createRoot(document.getElementById("root")).render(
         <RouterProvider router={router} />
         <ToastContainer />
       </ContextProvider>
+      <ReactQueryDevtools></ReactQueryDevtools>
     </QueryClientProvider>
   </StrictMode>
 );
