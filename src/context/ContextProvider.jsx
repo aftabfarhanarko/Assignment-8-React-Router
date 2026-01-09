@@ -27,20 +27,20 @@ const ContextProvider = ({ children }) => {
     setLoder(true);
     return updateProfile(auth.currentUser, userData);
   };
-  const emailVeryFi = () => {
-    setLoder(true);
-    return sendEmailVerification(auth.currentUser);
-  };
+  // const emailVeryFi = () => {
+  //   setLoder(true);
+  //   return sendEmailVerification(auth.currentUser);
+  // };
 
   const loginUser = (email, password) => {
     setLoder(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  const passwordResetEmail = (email) => {
-    setLoder(true);
-    return sendPasswordResetEmail(auth, email);
-  };
+  // const passwordResetEmail = (email) => {
+  //   setLoder(true);
+  //   return sendPasswordResetEmail(auth, email);
+  // };
 
   const logOutUser = () => {
     setLoder(true);
@@ -62,10 +62,10 @@ const ContextProvider = ({ children }) => {
   const info = {
     creatUser,
     profileUbdeat,
-    emailVeryFi,
+    // emailVeryFi,
     loginUser,
     user,
-    passwordResetEmail,
+    // passwordResetEmail,
     logOutUser,
     loder,
     googleProvider

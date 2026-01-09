@@ -4,12 +4,12 @@ import { RouterProvider } from "react-router/dom";
 import { router } from "./Router/Router";
 import ContextProvider from "./context/ContextProvider";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ToastContainer } from "react-toastify";
 
 import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { Toaster } from "sonner";
 
 /* =======================
    TanStack Query Client
@@ -28,7 +28,7 @@ createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <ContextProvider>
         <RouterProvider router={router} />
-        <ToastContainer />
+        <Toaster position="top-right" />
       </ContextProvider>
       <ReactQueryDevtools></ReactQueryDevtools>
     </QueryClientProvider>

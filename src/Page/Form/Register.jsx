@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
@@ -12,11 +12,16 @@ import {
   UserPlus,
   ArrowRight,
 } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router";
+import useAxiosAPi from "../../hook/useAPi";
 
 const Register = () => {
   const [show, setShow] = useState(false);
-  const { creatUser, profileUbdeat, emailVeryFi } = useContext(AuthContext);
-
+  const locations = useLocation();
+  const nagvit = useNavigate();
+  const { creatUser, profileUbdeat, googleProvider } = useContext(AuthContext);
+ const axiosApi  = useAxiosAPi()
   const handelRegister = (e) => {
     e.preventDefault();
     const email = e.target.email?.value;
@@ -36,20 +41,39 @@ const Register = () => {
       displayName,
       photoURL,
     };
+    const sendDB = {
+      email,
+      displayName,
+      photoURL,
+      password,
+      userCreatAt: new Date().toISOString(),
+    };
 
     creatUser(email, password)
       .then(() => {
         toast.success("User Account Creat Successfully");
         profileUbdeat(userData).then(() => {
-          emailVeryFi().then(() => {
-            toast.success("Your Email Verify Code Proviead");
-          });
+          console.log("User  Data", sendDB);
+          axiosApi.post("users", sendDB)
+          .then(res => {
+            console.log("Server Send", res);
+            
+          }) 
         });
       })
       .catch((err) => {
         toast.error(err.message);
       });
   };
+
+  const handelGoogle = () => {
+    googleProvider().then((res) => {
+      console.log("Google Provider", res);
+
+      // nagvit(`${locations.state ? locations.state : "/"}`);
+    });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-base-100 py-12 px-4">
       <title>Register From</title>
@@ -64,7 +88,7 @@ const Register = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="card w-full max-w-md bg-base-100/60 backdrop-blur-xl shadow-2xl border border-white/20 relative z-10"
+        className="card w-full max-w-md bg-base-100/60 backdrop-blur-xl shadow-sm  border border-white/20 relative z-10"
       >
         <div className="card-body p-8 sm:p-10">
           <div className="text-center mb-8">
@@ -198,6 +222,19 @@ const Register = () => {
                 <span className="flex items-center justify-center gap-2">
                   Register <ArrowRight size={20} />
                 </span>
+              </motion.button>
+              <motion.button
+                whileHover={{
+                  scale: 1.02,
+                  backgroundColor: "rgba(var(--b2), 0.8)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handelGoogle}
+                type="button"
+                className="btn h-12 w-full bg-base-100 border border-base-content/10 hover:border-base-content/20 rounded-2xl shadow-sm hover:shadow-md transition-all normal-case text-base font-semibold"
+              >
+                <FcGoogle size={24} />
+                <span className="ml-2">Google</span>
               </motion.button>
 
               <p className="text-center text-sm font-medium text-base-content/60 mt-4">
