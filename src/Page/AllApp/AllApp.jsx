@@ -20,6 +20,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const AllApp = () => {
   const [search, setSearch] = useState("");
+  const [sortOption, setSortOption] = useState("default");
   const apies = useAxiosAPi();
 
   //   Positions
@@ -44,15 +45,36 @@ const AllApp = () => {
   const filterProducat = React.useMemo(() => {
     if (!data || !Array.isArray(data)) return [];
 
-    if (!search.trim()) return data;
+    let filtered = search.trim()
+      ? data.filter(
+          (app) =>
+            app.name?.toLowerCase().includes(search.toLowerCase()) ||
+            app.title?.toLowerCase().includes(search.toLowerCase()) ||
+            app.description?.toLowerCase().includes(search.toLowerCase())
+        )
+      : [...data];
 
-    return data.filter(
-      (app) =>
-        app.name?.toLowerCase().includes(search.toLowerCase()) ||
-        app.title?.toLowerCase().includes(search.toLowerCase()) ||
-        app.description?.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [data, search]);
+    // Sorting Logic
+    switch (sortOption) {
+      case "rating_high_low":
+        filtered.sort((a, b) => (b.ratingAvg || 0) - (a.ratingAvg || 0));
+        break;
+      case "rating_low_high":
+        filtered.sort((a, b) => (a.ratingAvg || 0) - (b.ratingAvg || 0));
+        break;
+      case "download_high_low":
+        filtered.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
+        break;
+      case "download_low_high":
+        filtered.sort((a, b) => (a.downloads || 0) - (b.downloads || 0));
+        break;
+      default:
+        // Default sort (optional: maintain original order or specific logic)
+        break;
+    }
+
+    return filtered;
+  }, [data, search, sortOption]);
 
   return (
     <div className="min-h-screen bg-base-100 relative overflow-hidden py-20 px-4">
@@ -95,29 +117,60 @@ const AllApp = () => {
           </motion.p>
         </div>
 
-        {/* Search Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="max-w-3xl mx-auto mb-16"
-        >
-          <div className="bg-base-100/60 backdrop-blur-xl rounded-[2rem] shadow-2xl shadow-base-content/5 border border p-2 pl-6 pr-2 flex items-center gap-4">
+        {/* Search & Sort Section */}
+        <div className="max-w-7xl mx-auto mb-16 flex flex-col md:flex-row gap-6 items-center justify-between">
+          {/* Search Bar */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="w-full md:max-w-2xl bg-base-100/60 backdrop-blur-xl rounded-[2rem] shadow-2xl shadow-base-content/5 border  p-2 pl-6 pr-2 flex items-center gap-4 transition-all focus-within:ring-2 focus-within:ring-primary/20"
+          >
             <Search className="text-base-content/40" size={24} />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              placeholder="Search   apps by name, category, or features..."
-              className="w-full outline-0 bg-transparent border-none focus:ring-0 text-lg font-medium placeholder:text-base-content/30 h-14"
+              placeholder="Search apps by name, category..."
+              className="w-full bg-transparent border-none focus:ring-0 text-lg font-medium placeholder:text-base-content/30 h-4 outline-none"
             />
-            <div className="hidden md:flex items-center gap-2 bg-base-200/50 rounded-xl px-4 py-2 text-sm font-bold text-base-content/60">
+            <div className="hidden sm:flex items-center gap-2 bg-base-200/50 rounded-xl px-4 py-2 text-sm font-bold text-base-content/60 whitespace-nowrap">
               {allBook} Apps
             </div>
-          </div>
+          </motion.div>
 
-          
-        </motion.div>
+          {/* Sort Dropdown */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="w-full md:w-auto min-w-[200px]"
+          >
+            <div className="relative group">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Filter className="h-5 w-5 text-base-content/50" />
+              </div>
+              <select
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value)}
+                className="appearance-none w-full bg-base-100/60 backdrop-blur-xl border border-white/20 text-base-content font-medium py-4 pl-12 pr-10 rounded-[2rem] shadow-xl shadow-base-content/5 focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
+              >
+                <option value="default">Default Sort</option>
+                <option value="rating_high_low">Rating: High to Low</option>
+                <option value="rating_low_high">Rating: Low to High</option>
+                <option value="download_high_low">
+                  Downloads: High to Low
+                </option>
+                <option value="download_low_high">
+                  Downloads: Low to High
+                </option>
+              </select>
+              <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                <ChevronLeft className="h-5 w-5 text-base-content/50 rotate-[-90deg]" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Content Section */}
         <div className="min-h-[400px]">
