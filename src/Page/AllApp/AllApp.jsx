@@ -8,12 +8,13 @@ import {
   List,
   ChevronLeft,
   ChevronRight,
+  Download,
+  Star,
 } from "lucide-react";
 import NotFound from "./NotFound";
 import AppLoder from "../../Loder/AppLoder";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosAPi from "../../hook/useAPi";
-import { FaCircleChevronLeft } from "react-icons/fa6";
 
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -101,19 +102,21 @@ const AllApp = () => {
           transition={{ delay: 0.3 }}
           className="max-w-3xl mx-auto mb-16"
         >
-          <div className="bg-base-100/60 backdrop-blur-xl rounded-[2rem] shadow-2xl shadow-base-content/5 border border-white/20 p-2 pl-6 pr-2 flex items-center gap-4">
+          <div className="bg-base-100/60 backdrop-blur-xl rounded-[2rem] shadow-2xl shadow-base-content/5 border border p-2 pl-6 pr-2 flex items-center gap-4">
             <Search className="text-base-content/40" size={24} />
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              placeholder="Search apps by name, category, or features..."
-              className="w-full bg-transparent border-none focus:ring-0 text-lg font-medium placeholder:text-base-content/30 h-14"
+              placeholder="Search   apps by name, category, or features..."
+              className="w-full outline-0 bg-transparent border-none focus:ring-0 text-lg font-medium placeholder:text-base-content/30 h-14"
             />
             <div className="hidden md:flex items-center gap-2 bg-base-200/50 rounded-xl px-4 py-2 text-sm font-bold text-base-content/60">
               {allBook} Apps
             </div>
           </div>
+
+          
         </motion.div>
 
         {/* Content Section */}
