@@ -1,44 +1,65 @@
-import { ArrowDownToLine } from "lucide-react";
-
-import reating from "../../assets/icon-ratings.png";
+import { ArrowDownToLine, Star, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { motion } from "framer-motion";
 
-const DisplayAllApp = ({ data }) => {
-  useEffect(() => {
-        AOS.init({
-          duration: 1000,
-          offset: 100,
-          once: true,
-        });
-        AOS.refresh();
-      }, []);
-  const { image, title, downloads, ratingAvg,id } = data;
+const DisplayAllApp = ({ data, index }) => {
+  const { image, title, downloads, ratingAvg, _id } = data;
+
   return (
-    <Link to={`/appDetlics/${id}`}>
-      <div  data-aos="fade-up" className="mt-10 bg-base-300 shadow-xl rounded-lg  hover:shadow-2xl ">
-        <div className="p-5">
-          <img className="rounded-lg h-[290px] w-full" src={image}></img>
-          <h2 className="mt-2 text-lg font-semibold">Name : {title}</h2>
-
-          <div className="flex justify-between mt-4">
-            <div className="text-[15px] flex  items-center text-green-400 bg-green-100 rounded-lg px-2 gap-1  ">
-              <span className="text-[12px]">
-                {" "}
-                <ArrowDownToLine className="h-4" />
-              </span>
-              <p className=" text-[15px] font-semibold">{downloads}</p>
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      whileHover={{ y: -10 }}
+      className="group"
+    >
+      <Link to={`/appDetlics/${_id}`} className="block h-full">
+        <div className="h-full bg-base-100/60 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-xl overflow-hidden relative flex flex-col transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10">
+          
+          {/* Image Container */}
+          <div className="relative h-64 overflow-hidden">
+             <div className="absolute inset-0 bg-gradient-to-t from-base-100 to-transparent z-10 opacity-60" />
+             <img 
+              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out" 
+              src={image} 
+              alt={title} 
+            />
+            
+            {/* Overlay Badge */}
+            <div className="absolute top-4 right-4 z-20 bg-base-100/80 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-bold shadow-lg border border-white/20 flex items-center gap-1">
+              <Star size={12} className="text-orange-400 fill-orange-400" />
+              <span>{ratingAvg}</span>
             </div>
-            <div className="flex  items-center text-orange-400 bg-orange-100 rounded-lg  px-3 gap-2">
-              <img className="h-[15px] text-green-400" src={reating}></img>
-              <p className=" text-[15px] font-semibold">{ratingAvg}</p>
+          </div>
+
+          {/* Content */}
+          <div className="p-6 flex flex-col flex-grow relative z-20 -mt-10">
+            <div className="bg-base-100 p-4 rounded-2xl shadow-lg border border-base-200/50 flex-grow flex flex-col">
+              <h2 className="text-xl font-bold mb-3 line-clamp-1 group-hover:text-primary transition-colors">{title}</h2>
+              
+              <div className="mt-auto space-y-4">
+                <div className="flex items-center justify-between text-sm text-base-content/60 font-medium">
+                  <div className="flex items-center gap-1.5 bg-base-200/50 px-3 py-1.5 rounded-lg">
+                    <ArrowDownToLine size={14} />
+                    <span>{downloads}</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-orange-400 bg-orange-50 px-3 py-1.5 rounded-lg">
+                    <Star size={14} className="fill-orange-400" />
+                    <span>Rating</span>
+                  </div>
+                </div>
+
+                <div className="w-full py-3 rounded-xl bg-base-content/5 text-base-content/70 font-bold text-sm flex items-center justify-center gap-2 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  View Details <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 };
 
